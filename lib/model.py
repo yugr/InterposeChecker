@@ -10,6 +10,8 @@ from lib import errors
 from lib.errors import warn
 
 class Package:
+  __slots__ = ['name', 'source_name', 'lst', 'id', 'has_errors']
+
   def __init__(self, name, source_name=None):
     self.name = name
     self.source_name = source_name
@@ -67,6 +69,8 @@ class Package:
     return pkgs
 
 class Object:
+  __slots__ = ['name', 'soname', 'pkg', 'deps', 'imports', 'exports', 'is_shlib', 'is_symbolic', 'id']
+
   def __init__(self, name, soname, pkg, deps, imports, exports, is_shlib, is_symbolic):
     self.name = name
     self.soname = soname
@@ -155,6 +159,8 @@ class Object:
       self.deps.append(obj)
 
 class Symbol:
+  __slots__ = ['name', 'obj', 'is_weak', 'is_protected', 'version', 'id']
+
   def __init__(self, name, obj, is_weak, is_protected):
     self.name = name
     self.obj = obj

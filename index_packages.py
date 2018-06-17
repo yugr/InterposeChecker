@@ -190,7 +190,7 @@ def collect_pkg_data(pkg, wd_root, conn, v):
           if file_type.startswith('ELF '):
             objects.append(parse_elf_file(f, file_type, pkg))
   except Error as e:
-    error_msg = e.message
+    error_msg = str(e)
     pkg.has_errors = True
 
   if v:

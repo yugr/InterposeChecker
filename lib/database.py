@@ -8,11 +8,11 @@
 import MySQLdb
 
 def connect(db_name=None):
-  args = {
-    'host'   : 'localhost',
-    'user'   : 'root',
-    'passwd' : 'password',
-  }
+  args = dict(
+    host='localhost',
+    user='root',
+    passwd='password',
+  )
   if db_name is not None:
     args['db'] = db_name
   return MySQLdb.connect(**args)

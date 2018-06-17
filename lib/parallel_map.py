@@ -12,6 +12,8 @@ import multiprocessing
 from lib.errors import warn
 
 class WorkerThread(threading.Thread):
+  __slots__ = ['q', 'exceptions', 'action', 'ctx', 'results']
+
   def __init__(self, q, action):
     threading.Thread.__init__(self)
     self.q = q

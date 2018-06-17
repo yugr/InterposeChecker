@@ -18,6 +18,8 @@ from lib.recache import Re
 allpackages_url = 'https://packages.ubuntu.com/xenial/allpackages?format=txt.gz'
 
 class PkgInfo:
+  __slots__ = ['name', 'version', 'component', 'lst']
+
   def __init__(self, name, version, component=None):
     self.name = name
     self.version = version

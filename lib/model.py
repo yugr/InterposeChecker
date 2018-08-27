@@ -100,10 +100,9 @@ class Object:
   # Suppress warnings for e.g. _sys_nerr@@GLIBC_2.12 and _sys_nerr@GLIBC_2.4
   def filter_dups(self, sym_list):
     lst = []
-    lst_names = set()
+    lst_names = {sym.name for sym in sym_list}
     for sym in sym_list:
       if sym.name not in lst_names:
-        lst_names.add(sym.name)
         lst.append(sym)
     sym_list[:] = lst
 

@@ -9,15 +9,11 @@
 
 import os
 import os.path
-import sys
 import shutil
-import gzip
 import glob
 import datetime
 import subprocess
 import argparse
-
-import queue
 
 from elftools.elf.elffile import ELFFile
 from elftools.elf.sections import SymbolTableSection
@@ -111,7 +107,7 @@ def parse_elf_file(f, file_type, pkg):
     if not symtab:
       error("%s: no symbol table in %s")
       return False
-    elif not isinstance(symtab, SymbolTableSection):
+    if not isinstance(symtab, SymbolTableSection):
       error("%s: unexpected type of .dynsym" % f)
       return False
 
@@ -152,7 +148,7 @@ class Stats:
     self.has_errors = has_errors
 
   def __str__(self):
-    return "time = %g, nobjs = %d, ndeps = %d, nsyms = %d" % (self.time, self.nobjs, self.ndeps, self.nsyms)
+    return "time = %g, nobjs = %d, ndeps = %d, nsyms = %d" % (self.total_time, self.nobjs, self.ndeps, self.nsyms)
 
 def collect_pkg_data(pkg, wd_root, conn, v):
   t0 = datetime.datetime.now()

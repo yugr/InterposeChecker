@@ -14,24 +14,24 @@ class Re:
   last_match = None
 
   @classmethod
-  def match(self, *args, **kwargs):
-    self.last_match = re.match(*args, **kwargs)
-    return self.last_match
+  def match(cls, *args, **kwargs):
+    cls.last_match = re.match(*args, **kwargs)
+    return cls.last_match
 
   @classmethod
-  def search(self, *args, **kwargs):
-    self.last_match = re.search(*args, **kwargs)
-    return self.last_match
+  def search(cls, *args, **kwargs):
+    cls.last_match = re.search(*args, **kwargs)
+    return cls.last_match
 
   @classmethod
-  def fullmatch(self, *args, **kwargs):
-    self.last_match = re.fullmatch(*args, **kwargs)
-    return self.last_match
+  def fullmatch(cls, *args, **kwargs):
+    cls.last_match = re.fullmatch(*args, **kwargs)
+    return cls.last_match
 
   @classmethod
-  def group(self, *args, **kwargs):
-    return self.last_match.group(*args, *kwargs)
+  def group(cls, *args, **kwargs):
+    return cls.last_match.group(*args, *kwargs)
 
   @classmethod
-  def groups(self, *args, **kwargs):
-    return self.last_match.groups(*args, **kwargs)
+  def groups(cls, *args, **kwargs):
+    return cls.last_match.groups(*args, **kwargs)

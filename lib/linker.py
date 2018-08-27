@@ -8,10 +8,10 @@
 import re
 
 def is_dynamic_linker(filename):
-  return re.match('^ld-.*\.so$', filename)
+  return re.match(r'^ld-.*\.so$', filename)
 
 def is_libc(filename):
   return filename.startswith('libc-')
 
 def is_libc_sublib(filename):
-  return re.match('^lib(c|m|rt|pthread)-', filename)
+  return re.match(r'^lib(c|m|rt|pthread)-', filename)

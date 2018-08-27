@@ -10,7 +10,6 @@
 import os
 import os.path
 import re
-import sys
 import argparse
 import datetime
 

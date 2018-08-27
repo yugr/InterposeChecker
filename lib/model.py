@@ -177,7 +177,8 @@ class Symbol:
       s.append('protected')
     return ' '.join(s)
 
-  def create_schema(cur):
+  @classmethod
+  def create_schema(cls, cur):
     cur.execute('CREATE TABLE Symbols (ID INT UNSIGNED NOT NULL AUTO_INCREMENT, Name VARCHAR(1024), Version VARCHAR(32), IsWeak BOOLEAN, IsProtected BOOLEAN, ImportOrExport BOOLEAN, ObjectID INT UNSIGNED, PRIMARY KEY (ID), FOREIGN KEY (ObjectID) REFERENCES Objects(ID))')
 
   @classmethod

@@ -30,7 +30,7 @@ class Package:
     cur.execute('CREATE TABLE Errors (PackageID INT UNSIGNED, Message VARCHAR(1024), FOREIGN KEY (PackageID) REFERENCES Packages(ID))')
 
   def serialize(self, cur, error_msg):
-    source_name = '' if self.source_name is None else self.source_name
+    source_name = self.source_name or ''
     cur.execute('INSERT INTO Packages (Name, SourceName) VALUES (%s, %s)', (self.name, source_name))
     self.id = int(cur.lastrowid)
     if error_msg:
@@ -112,7 +112,7 @@ class Object:
     cur.execute('CREATE TABLE ShlibDeps (ObjectID INT UNSIGNED, DepName VARCHAR(64), FOREIGN KEY (ObjectID) REFERENCES Objects(ID))')
 
   def serialize(self, cur, pkg_id):
-    soname = '' if self.soname is None else self.soname
+    soname = self.soname or ''
     cur.execute('INSERT INTO Objects (Name, SoName, IsShlib, IsSymbolic, PackageID) VALUES (%s, %s, %s, %s, %s)', (self.name, soname, self.is_shlib, self.is_symbolic, pkg_id))
     self.id = int(cur.lastrowid)
     cur.executemany('INSERT INTO ShlibDeps (ObjectID, DepName) VALUES (%s, %s)', [(self.id, dep) for dep in self.deps])

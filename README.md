@@ -1,6 +1,6 @@
 # What is this?
 
-This is an experimental project to locate symbol interpositions in Debian packages.
+This is an UNFINISHED experimental project to locate symbol interpositions in Debian packages.
 
 Inspired by [Flameeyes' link-collisions script](https://github.com/Flameeyes/ruby-elf/tree/master/tools/link-collisions).
 
